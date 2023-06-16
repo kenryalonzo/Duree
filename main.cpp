@@ -19,11 +19,11 @@ int main()
     Duree duree3(0, 10, 42), duree4(0, 53, 27);
     Duree resultat;
 
-    duree1.afficher();
+    duree3.afficher();
     cout << "+" << endl;
-    duree2.afficher();
+    duree4.afficher();
 
-    resultat = duree1 + duree2;
+    resultat = duree3 + duree4;
 
     cout << "=" << endl;
     resultat.afficher();

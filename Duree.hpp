@@ -10,7 +10,7 @@ public:
     bool estEgal(Duree const& a) const;
     bool estDifferent(Duree const& a) const;
     bool estPlusPetitQue(Duree const& a);
-    int estAdditionner(Duree const& a);
+    Duree& operator+=(const Duree &duree);
     void afficher() const;
 
 private:
@@ -22,6 +22,6 @@ private:
 bool operator==(Duree const& a, Duree const& b);
 bool operator!=(Duree const& a, Duree const& b);
 bool operator<(Duree const& a, Duree const& b);
-int operator+(Duree const& a, Duree const& b);
+Duree operator+(Duree const& a, Duree const& b);
 
 #endif

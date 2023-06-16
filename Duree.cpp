@@ -23,18 +23,19 @@ bool Duree::estPlusPetitQue(Duree const& b)
     return ((m_heures < b.m_heures) || (m_heures == b.m_heures && m_minutes < b.m_minutes) || (m_heures == b.m_heures && m_minutes == b.m_minutes && m_secondes < b.m_secondes));   
 }
 
-int Duree::estAdditionner(Duree const& b)
+Duree& Duree::operator+=(const Duree &duree2)
 {
-
-    m_secondes +=  b.m_secondes;
-    m_minutes += b.m_secondes / 60;
+    m_secondes += duree2.m_secondes;
+    m_minutes += m_secondes / 60;
     m_secondes %= 60;
 
-    m_minutes +=b.m_minutes;
-    m_heures += b.m_minutes / 60;  
+    m_minutes += duree2.m_minutes;
+    m_heures += m_minutes / 60;
     m_minutes %= 60;
-    m_heures += b.m_heures;
 
+    m_heures += duree2.m_heures;
+
+    return *this;
 }
 
 void Duree::afficher() const
@@ -57,7 +58,9 @@ bool operator<(Duree const& a, Duree const& b)
     return a < b;
 }
 
-int operator+(Duree const& a, Duree const& b)
+Duree operator+(Duree const& a, Duree const& b)
 {
-    return a + b;
+    Duree copie(a);
+    copie += b;
+    return copie;
 }
